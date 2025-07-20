@@ -1,18 +1,16 @@
 import 'package:ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce/common/widget/app_bar/app_bar.dart';
 import 'package:ecommerce/common/widget/button/basic_app_button.dart';
-import 'package:ecommerce/presentation/auth/pages/sign_up.dart';
-import 'package:ecommerce/presentation/auth/pages/enter_password_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SigningScreen extends StatelessWidget {
-  const SigningScreen({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true),
+      appBar: BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
@@ -23,8 +21,6 @@ class SigningScreen extends StatelessWidget {
             _emailField(),
             const SizedBox(height: 20),
             _continueButton(context),
-            const SizedBox(height: 20),
-            _createAccrount(context),
           ],
         ),
       ),
@@ -33,22 +29,19 @@ class SigningScreen extends StatelessWidget {
 
   Widget _signingText() {
     return Text(
-      "Sign in",
+      "Forgot Password",
       style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
     );
   }
 
   Widget _emailField() {
-    return TextField(decoration: InputDecoration(hintText: "Email"));
+    return TextField(
+      decoration: InputDecoration(hintText: "Enter Email Address"),
+    );
   }
 
   Widget _continueButton(context) {
-    return BasicAppButton(
-      text: "Continue",
-      onPressed: () {
-       AppNavigator.push(context, EnterPasswordScreen());
-      },
-    );
+    return BasicAppButton(text: "Continue", onPressed: () {});
   }
 
   Widget _createAccrount(BuildContext context) {
@@ -58,10 +51,7 @@ class SigningScreen extends StatelessWidget {
           TextSpan(text: "Don't you have an account? "),
           TextSpan(
             text: "Create one",
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                AppNavigator.push(context, SignUpScreen());
-              },
+            recognizer: TapGestureRecognizer()..onTap = () {},
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],

@@ -1,10 +1,14 @@
 import 'package:ecommerce/core/configs/theme/app_theme.dart';
-import 'package:ecommerce/presentation/auth/bloc/splash_cubit.dart';
+import 'package:ecommerce/firebase_options.dart';
+import 'package:ecommerce/presentation/splash/bloc/splash_cubit.dart';
 import 'package:ecommerce/presentation/splash/pages/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

@@ -1,5 +1,7 @@
 import 'package:ecommerce/common/helper/navigator/app_navigator.dart';
+import 'package:ecommerce/common/widget/app_bar/app_bar.dart';
 import 'package:ecommerce/common/widget/button/basic_app_button.dart';
+import 'package:ecommerce/presentation/auth/pages/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +11,13 @@ class EnterPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(hideBack: false),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _signingText(),
+            _signinText(),
             const SizedBox(height: 20),
             _passwordField(),
             const SizedBox(height: 20),
@@ -26,7 +30,7 @@ class EnterPasswordScreen extends StatelessWidget {
     );
   }
 
-  Widget _signingText() {
+  Widget _signinText() {
     return Text(
       "Sign in",
       style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
@@ -38,22 +42,20 @@ class EnterPasswordScreen extends StatelessWidget {
   }
 
   Widget _continueButton(context) {
-    return BasicAppButton(
-      text: "Continue",
-      onPressed: () {
-        AppNavigator.pushReplacement(context, Scaffold());
-      },
-    );
+    return BasicAppButton(text: "Continue", onPressed: () {});
   }
 
   Widget _forgotPassword(BuildContext context) {
     return RichText(
       text: TextSpan(
         children: [
-          TextSpan(text: "Forgot Password "),
+          TextSpan(text: "Forgot Password? "),
           TextSpan(
             text: "Reset",
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                AppNavigator.push(context, ForgotPasswordScreen());
+              },
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
